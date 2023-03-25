@@ -7,16 +7,21 @@
 int main() {
     int status;
     int pid = fork();
-    int grandchild = fork();
 
     // Write C code here   
-    if (grandchild == 0){
-        printf("I am the grandchild (%d)\n", getpid());
+    if (pid == 0){
+	int grandchild = fork();
+	if (grandchild == 0){
+		printf("I am the grandchild (%d)\n", getpid());
+	}
+	else {
+		wait(NULL);
+		printf("I am the child (%d)\n", getpid());
+	}
     }
-    else if (pid == 0){
-        printf("I am the child (%d)\n", getpid());
-        printf("I am the parent (%d)\n", getppid());
+    else {
+	wait(NULL);
+        printf("I am the parent (%d)\n", getpid());
     }
-
     return 0;
 }
