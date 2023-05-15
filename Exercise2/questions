@@ -1,0 +1,3 @@
+7. Round Robin was the best with my inputs and outputs
+8. FCFS is faster if RR quantum exceeds the highest burst time
+9. Round robin will be inefficient because context switching will happen too frequently
